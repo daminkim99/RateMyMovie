@@ -92,28 +92,23 @@ exports.getLogin = (req, res) => {
     });
   
     User.findOne(
-      { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
-      (err, existingUser) => {
-        if (err) {
-          return next(err);
-        }
-        if (existingUser) {
-          req.flash("errors", {
-            msg: "Account with that email address or username already exists.",
-          });
-          return res.redirect("../signup");
-        }
-        user.save((err) => {
-          if (err) {
-            return next(err);
-          }
-          req.logIn(user, (err) => {
-            if (err) {
-              return next(err);
+      { $or: [{ email: req.body.email }, { userName: req.body.userName }] })
+        .then(existingUser => {
+            if (existingUser) {
+                req.flash("errors", {
+                    msg: "Account with that email address or username already exists.",
+                })
+                return res.redirect("../signup")
             }
-            res.redirect("/ratings");
-          });
-        });
-      }
-    );
-  };
+            return user.save()
+        })
+        .then(() => req.logIn(user, (err)=> {
+            if (err) {
+                return next(err)
+            }
+        }))
+        .then(() => res.redirect("/ratings"))
+        .catch(err => next(err))
+    
+  }
+    
