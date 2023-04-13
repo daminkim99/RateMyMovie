@@ -19,10 +19,12 @@
 body {
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  background-image: url('bg1.jpg');
+  background-size:cover;
 }
 
 .cover-container {
-  max-width: 42em;
+  max-width: 80%;
 }
 
 
@@ -60,4 +62,34 @@ body {
   display: flex;
   justify-content: center;
   gap:10%;
+ }
+
+/*
+ * Main
+ */
+
+.welcome{
+  margin-bottom:3%;
+  margin-top:5%;
+  text-align:start;
+}
+.welcome + h3{
+  margin-bottom:15%;
+  text-align:start;
+}
+ /*
+ * Cards
+ */
+
+ .cardicon{
+  display:flex;
+  justify-content:center;
+  gap:10%;
+ }
+ .containers{
+  display:grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 20px;
+
  }
