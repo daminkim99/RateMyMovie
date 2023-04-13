@@ -11,6 +11,9 @@ router.get("/", ensureAuth, ratingsController.getRatings);
 router.get("/add", ratingsController.getMovie)
 
 router.get("/searchMovie/:names", ratingsController.searchMovie)
+
+router.post("/addMovie",ratingsController.addMovie)
+
 // router.post("/createPost", upload.single("file"), ratingsController.createPost);
 
 // router.put("/likePost/:id", ratingsController.likePost);

@@ -1,5 +1,6 @@
 const { default: axios } = require("axios")
 const { request } = require("express")
+const Rating = require("../models/Rating")
 
 module.exports = {
     getRatings: async (req,res)=>{
@@ -21,7 +22,7 @@ module.exports = {
         }
     },
     searchMovie: async(req,res) => {
-        console.log(req.params.names)
+        // console.log(req.params.names)
         let movieCan = []
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${req.params.names}&page=1&include_adult=false&year=2022`)
             .then(response => response.data.results)
@@ -33,11 +34,21 @@ module.exports = {
                 res.render('browse.ejs', {movie:movieCan, request:req.params.names})
             })
             .catch(error => console.log(error))
-        // try{
-        //     res.render('add.ejs')
-        // } catch(err){
-        //     console.log(err)
-        // }
+    },
+    addMovie: async(req,res) => {
+        console.log(req.body)
+        //breaks userpick into appropriate variables 
+        let userPick = req.body.userpick.split(',')
+        await Rating.create({
+            title:userPick[2],
+            poster:userPick[1],
+            title_id:userPick[0],
+            review: req.body.review,
+            rating:req.body.rating,
+            release_date: userPick[3]
+        })
+        console.log("Post has been added!")
+        res.redirect('/')
     }
    
 }
