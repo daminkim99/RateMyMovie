@@ -10,6 +10,7 @@ const logger = require("morgan");
 const connectDB = require("./config/database")
 const mainRoutes = require("./routes/main")
 const ratingsRoutes = require("./routes/ratings");
+const axios = require('axios')
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" })
