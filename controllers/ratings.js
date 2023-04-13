@@ -1,4 +1,5 @@
 const { default: axios } = require("axios")
+const { request } = require("express")
 
 module.exports = {
     getRatings: async (req,res)=>{
@@ -28,8 +29,8 @@ module.exports = {
                 for(element of results){
                     movieCan.push({id:element.id, title:element.original_title, poster:element.poster_path, release_date:element.release_date})
                 }
-                console.log(movieCan)
-                res.render('add.ejs', {movie:movieCan})
+                // console.log(movieCan)
+                res.render('browse.ejs', {movie:movieCan, request:req.params.names})
             })
             .catch(error => console.log(error))
         // try{
