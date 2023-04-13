@@ -10,7 +10,7 @@ router.get("/", ensureAuth, ratingsController.getRatings);
 
 router.get("/add", ratingsController.getMovie)
 
-router.get("/searchMovie/:names", ratingsController.searchMovie)
+router.get("/searchMovie", ratingsController.searchMovie)
 
 router.post("/addMovie",ratingsController.addMovie)
 

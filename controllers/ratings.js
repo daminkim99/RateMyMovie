@@ -22,9 +22,8 @@ module.exports = {
         }
     },
     searchMovie: async(req,res) => {
-        // console.log(req.params.names)
         let movieCan = []
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${req.params.names}&page=1&include_adult=false&year=2022`)
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${req.query.movieTitle}&year=${req.query.movieYear}`)
             .then(response => response.data.results)
             .then(results => {
                 for(element of results){
