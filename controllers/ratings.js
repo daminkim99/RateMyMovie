@@ -30,7 +30,7 @@ module.exports = {
                     movieCan.push({id:element.id, title:element.original_title, poster:element.poster_path, release_date:element.release_date})
                 }
                 // console.log(movieCan)
-                res.render('browse.ejs', {movie:movieCan, request:req.params.names})
+                res.render('browse.ejs', {movie:movieCan, request:req.query.movieTitle})
             })
             .catch(error => console.log(error))
     },
