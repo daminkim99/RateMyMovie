@@ -8,9 +8,9 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 //Post Routes - simplified for now
 router.get("/", ensureAuth, ratingsController.getRatings);
 
-router.get("/add", ratingsController.getMovie)
+router.get("/add", ensureAuth, ratingsController.getMovie)
 
-router.get("/searchMovie", ratingsController.searchMovie)
+router.get("/searchMovie", ensureAuth, ratingsController.searchMovie)
 
 router.post("/addMovie",ratingsController.addMovie)
 

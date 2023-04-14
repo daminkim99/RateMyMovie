@@ -4,11 +4,11 @@ const Rating = require("../models/Rating")
 
 module.exports = {
     getRatings: async (req,res)=>{
-        console.log(req.user)
+        console.log(`req.user in get ratings is ${req.user}`)
         try{
-            // const todoItems = await Todo.find({userId:req.user.id})
-            // const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('ratings.ejs', {user: req.user})
+            const movies = await Rating.find({user:req.user.id}).sort({createdAt: "desc"})
+            console.log(movies)
+            res.render('ratings.ejs', {movies: movies , user: req.user})
         }catch(err){
             console.log(err)
         }
@@ -44,7 +44,8 @@ module.exports = {
             title_id:userPick[0],
             review: req.body.review,
             rating:req.body.rating,
-            release_date: userPick[3]
+            release_date: userPick[3],
+            user: req.user.id
         })
         console.log("Post has been added!")
         res.redirect('/')
