@@ -29,11 +29,6 @@ const RatingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  deleted: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
   starred: {
     type: Boolean,
     required: true,

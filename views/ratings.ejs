@@ -18,7 +18,14 @@
                 <p class="card-text"><%= movies[i].review %> </p>
                 <div class="cardicon">
                     <p class="card-text"><i class="fa-regular fa-star"></i></p>
-                    <p class="card-text"><i class="fa-solid fa-trash text-muted"></i></p>
+                    <form
+                        action="/ratings/deleteRating/<%= movies[i].id %>?_method=DELETE"
+                        method="POST"
+                        class="col-3"
+                    >
+                    <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                    <!-- <button class="btn btn-primary fa fa-trash" type="submit"></button> -->
+        </form>
                 </div>
                 <p class="card-text"><small class="text-muted">Published: <%= movies[i].createdAt.toDateString() %></small></p>
                 </div>

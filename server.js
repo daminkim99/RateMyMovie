@@ -60,6 +60,6 @@ app.use("/", mainRoutes);
 app.use("/ratings", ratingsRoutes);
 
 //Server Running
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
 });
