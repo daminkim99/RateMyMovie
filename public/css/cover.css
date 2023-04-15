@@ -64,6 +64,7 @@ body {
   gap:10%;
  }
 
+
 /*
  * Main
  */
@@ -86,7 +87,7 @@ body {
   justify-content:center;
   gap:10%;
  }
- .containers{
+ .containers, .movieSelection{
   display:grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
@@ -96,3 +97,38 @@ body {
  .hidden{
   display:none;
  }
+
+ /*
+ * forms
+ */
+
+ #email, #password, .form-control {
+  width:50%;
+  text-align:center;
+  margin:auto;
+ }
+
+/*
+ * movie search
+ */
+
+ .movieSelection{
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+ }
+
+ .movieSelection div.card{
+  width:10rem;
+ }
+ .movieSelection div.card-body{
+  height:10rem;
+ }
+
+
+.goback{
+  width:10%;
+  margin:0 auto;
+}
+.goback a, .goback a:hover{
+  color: white;
+}

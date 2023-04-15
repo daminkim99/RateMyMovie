@@ -8,16 +8,16 @@ module.exports = {
         try{
             const movies = await Rating.find({user:req.user.id}).sort({createdAt: "desc"})
             // console.log(movies)
-            res.render('ratings.ejs', {movies: movies , user: req.user})
+            res.render('ratings.ejs', {movies: movies , user: req.user, activeLink:'home'})
         }catch(err){
             console.log(err)
         }
     },
-    
+
     getMovie: async(req,res) => {
         // console.log(req.user)
         try{
-            res.render('add.ejs')
+            res.render('add.ejs', {activeLink:'add'})
         } catch(err){
             console.log(err)
         }
@@ -28,10 +28,16 @@ module.exports = {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${req.query.movieTitle}&year=${req.query.movieYear}`)
                 .then(response => response.data.results)
                 .then(results => {
-                    for(element of results){
-                        movieCan.push({id:element.id, title:element.original_title, poster:element.poster_path, release_date:element.release_date})
+                    console.log(results)
+                    if (Object.keys(results).length ===0){
+                        console.log('rendering...')
+                        res.render('404.ejs', {request:req.query.movieTitle, activeLink: "add"})
+                    } else {
+                        for(element of results){
+                            movieCan.push({id:element.id, title:element.original_title, poster:element.poster_path, release_date:element.release_date})
+                        }
+                        res.render('browse.ejs', {movie:movieCan, request:req.query.movieTitle, activeLink:'add'})
                     }
-                    res.render('browse.ejs', {movie:movieCan, request:req.query.movieTitle})
                 })
                 .catch(error => console.log(error))
         } catch(err){
