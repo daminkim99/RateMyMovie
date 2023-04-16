@@ -3,7 +3,7 @@ Write a short sentence or two about this project and what it does. Be sure to in
 
 **Link to project:** http://recruiters-love-seeing-live-demos.com/
 
-![alt tag](http://placecorgi.com/1200/650)
+![alt tag](https://github.com/daminkim99/daminkim99/blob/main/images/RateMyMovie.gif)
 
 ## How It's Made:
 
