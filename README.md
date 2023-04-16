@@ -2,7 +2,7 @@
 
 A Project built on MVC architecture that allows users to write their reviews and provide their analysis of the movies they watch.
 
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
+**Link to project:** https://poised-deer-leg-warmers.cyclic.app
 
 ![alt tag](https://github.com/daminkim99/daminkim99/blob/main/images/RateMyMovie.gif)
 
