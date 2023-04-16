@@ -6,7 +6,7 @@ module.exports = {
     getRatings: async (req,res)=>{
         // console.log(`req.user in get ratings is ${req.user}`)
         try{
-            const movies = await Rating.find({user:req.user.id}).sort({createdAt: "desc"})
+            const movies = await Rating.find({user:req.user.id}).sort({starred: "desc" , createdAt: "desc"})
             // console.log(movies)
             res.render('ratings.ejs', {movies: movies , user: req.user, activeLink:'home'})
         }catch(err){
@@ -65,13 +65,28 @@ module.exports = {
     },
     deleteRating: async(req,res) => {
         try {
-            // Find the movie title by id
-            let movie = await Rating.findById({ _id: req.params.id });
-            console.log(`movie to delete ${movie}`)
-            // Delete post from db
+            
             await Rating.deleteOne({_id: req.params.id})
-                
             console.log("Deleted Post");
+            res.redirect("/ratings");
+          } catch (err) {
+            res.redirect("/ratings");
+          }
+    },
+    starMovie: async(req,res) => {
+        try {
+            await Rating.findOneAndUpdate({_id: req.params.id}, {starred:1})
+            console.log("starred Post")
+            res.redirect("/ratings");
+          } catch (err) {
+            res.redirect("/ratings");
+          }
+    },
+    unStarMovie: async(req,res) => {
+        try {
+    
+            await Rating.findOneAndUpdate({_id: req.params.id}, {starred:0})
+            console.log("unstarred Post");
             res.redirect("/ratings");
           } catch (err) {
             res.redirect("/ratings");

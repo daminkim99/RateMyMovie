@@ -30,9 +30,9 @@ const RatingSchema = new mongoose.Schema({
     ref: "User",
   },
   starred: {
-    type: Boolean,
+    type: Number,
     required: true,
-    default: false,
+    default: 0,
   },
   createdAt: {
     type: Date,

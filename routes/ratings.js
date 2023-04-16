@@ -16,9 +16,9 @@ router.post("/addMovie",ratingsController.addMovie)
 
 router.delete("/deleteRating/:id", ratingsController.deleteRating)
 
-// router.post("/createPost", upload.single("file"), ratingsController.createPost);
+router.put("/starMovie/:id", ratingsController.starMovie)
 
-// router.put("/likePost/:id", ratingsController.likePost);
+router.put("/unStarMovie/:id", ratingsController.unStarMovie)
 
 
 module.exports = router;

@@ -14,18 +14,35 @@
                 <div class="card-body">
                 <h5 class="card-title"><%= movies[i].title %></h5>
                 <p class="card-text"><small class="text-muted">Release Date: <%= movies[i].release_date %></small></p>
-                <p class="card-text">Rating:<%= movies[i].rating %></p>
+                <p class="card-text">Rating: <%= movies[i].rating %></p>
                 <p class="card-text"><%= movies[i].review %> </p>
                 <div class="cardicon">
-                    <p class="card-text"><i class="fa-regular fa-star"></i></p>
-                    <form
-                        action="/ratings/deleteRating/<%= movies[i].id %>?_method=DELETE"
-                        method="POST"
-                        class="col-3"
-                    >
+                    <% if(movies[i].starred == 1) { %>
+                        <form
+                            action="/ratings/unStarMovie/<%= movies[i].id %>?_method=PUT"
+                            method="POST"
+                            class="col-3"
+                        >
+                            <button class="card-text btn btn-primary fa-solid fa-star" type="submit"></button>
+                        </form>
+                        
+                    <% } else { %>
+                        
+                        <form
+                            action="/ratings/starMovie/<%= movies[i].id %>?_method=PUT"
+                            method="POST"
+                            class="col-3"
+                        >
+                            <button class="card-text btn btn-primary fa-regular fa-star" type="submit"></button>
+                        </form>
+                    <% } %>
+                <form
+                    action="/ratings/deleteRating/<%= movies[i].id %>?_method=DELETE"
+                    method="POST"
+                    class="col-3"
+                >
                     <button class="btn btn-primary fa fa-trash" type="submit"></button>
-                    <!-- <button class="btn btn-primary fa fa-trash" type="submit"></button> -->
-        </form>
+                </form>
                 </div>
                 <p class="card-text"><small class="text-muted">Published: <%= movies[i].createdAt.toDateString() %></small></p>
                 </div>
