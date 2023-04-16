@@ -29,8 +29,8 @@ Some of the optimizations that can be made:
 
 Use the following credentials to explore the application's features and functionalities! 
 
-Demo Email: test1@test.com
-Demo Password: test1test1
+- Demo Email: test1@test.com
+- Demo Password: test1test1
 
 ## More Projects:
 Take a look at these couple of examples that I have in my own portfolio:
