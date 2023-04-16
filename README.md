@@ -1,5 +1,6 @@
 # RateMyMovie
-Write a short sentence or two about this project and what it does. Be sure to include a link and a screenshot (we're front end devs so we can actually see our work!).
+
+MVC architecture platform to give your own rating of the movies, with the ability to insert your own interpretation of the movies, and star the ones that you like! 
 
 **Link to project:** http://recruiters-love-seeing-live-demos.com/
 
@@ -7,27 +8,35 @@ Write a short sentence or two about this project and what it does. Be sure to in
 
 ## How It's Made:
 
-**Tech used:** HTML, CSS, JavaScript, Framework of choice
+**Tech used:**  JavaScript | Node.js | Express.js | MongoDB | Bootstrap | HTML5 | CSS3 
 
-Here's where you can go to town on how you actually built this thing. Write as much as you can here, it's totally fine if it's not too much just make sure you write *something*. If you don't have too much experience on your resume working on the front end that's totally fine. This is where you can really show off your passion and make up for that ten fold.
+It is a full stack application following MVC architecture, where users can search for a movie of their choice via movie database external API and give their rating/review of the movie. I made use of the passport authentication, so the ratings are specfic to the users. The user's information along with their reviews are stored in the MongoDB. Application makes use of the templating engine ejs to render the HTML. The users have the ability to delete the reviews, or star/unstar them so they starred ones stay at the top. The web application is made fully responsive. 
 
 ## Optimizations
-*(optional)*
 
-You don't have to include this section but interviewers *love* that you can not only deliver a final product that looks great but also functions efficiently. Did you write something then refactor it later and the result was 5x faster than the original implementation? Did you cache your assets? Things that you write in this section are **GREAT** to bring up in interviews and you can use this section as reference when studying for technical interviews!
+Some of the optimzations that can be made: 
+
+- Add a movieboard feature where everyone's reviews can be shown, and have the ability to like other people's reviews. This would be done with adding a new view page and pulling all data out of the database, instead of pulling the one only specific to the user.
+- Add your own title and movie poster along with reviews, instead of using the external API.
+- Edit your own reviews to make a change. 
 
 ## Lessons Learned:
 
-No matter what your experience level, being an engineer means continuously learning. Every time you build something you always have those *whoa this is awesome* or *fuck yeah I did it!* moments. This is where you should share those moments! Recruiters and interviewers love to see that you're self-aware and passionate about growing.
+I honed my skill of using an MVC architecture on a full stack app. This enabled me to effectively add another layer of modularity and organization to my full stack application. I also utilitzed passport local strategy middleware authentication in node.js application to limit the strangers to access the app, adding another layer of security to the users.  
 
-## Examples:
+## Demo Login:
+
+Demo Email: test1@test.com
+Demo password: test1test1
+
+## More Proejcts:
 Take a look at these couple examples that I have in my own portfolio:
 
-**Palettable:** https://github.com/alecortega/palettable
+<!-- **Palettable:** https://github.com/alecortega/palettable
 
 **Twitter Battle:** https://github.com/alecortega/twitter-battle
 
-**Patch Panel:** https://github.com/alecortega/patch-panel
+**Patch Panel:** https://github.com/alecortega/patch-panel -->
 
 
 
