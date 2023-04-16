@@ -2,20 +2,20 @@ const { default: axios } = require("axios")
 const { request } = require("express")
 const Rating = require("../models/Rating")
 
+//functions for the app 
+
 module.exports = {
     getRatings: async (req,res)=>{
-        // console.log(`req.user in get ratings is ${req.user}`)
         try{
             const movies = await Rating.find({user:req.user.id}).sort({starred: "desc" , createdAt: "desc"})
-            // console.log(movies)
             res.render('ratings.ejs', {movies: movies , user: req.user, activeLink:'home'})
+
         }catch(err){
             console.log(err)
         }
     },
 
     getMovie: async(req,res) => {
-        // console.log(req.user)
         try{
             res.render('add.ejs', {activeLink:'add'})
         } catch(err){
@@ -25,12 +25,11 @@ module.exports = {
     searchMovie: async(req,res) => {
         try{
             let movieCan = []
+            //get data from external movie db api 
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${req.query.movieTitle}&year=${req.query.movieYear}`)
                 .then(response => response.data.results)
                 .then(results => {
-                    console.log(results)
                     if (Object.keys(results).length ===0){
-                        console.log('rendering...')
                         res.render('404.ejs', {request:req.query.movieTitle, activeLink: "add"})
                     } else {
                         for(element of results){
@@ -40,6 +39,7 @@ module.exports = {
                     }
                 })
                 .catch(error => console.log(error))
+
         } catch(err){
             console.log(err)
         }
@@ -65,7 +65,6 @@ module.exports = {
     },
     deleteRating: async(req,res) => {
         try {
-            
             await Rating.deleteOne({_id: req.params.id})
             console.log("Deleted Post");
             res.redirect("/ratings");
@@ -84,7 +83,6 @@ module.exports = {
     },
     unStarMovie: async(req,res) => {
         try {
-    
             await Rating.findOneAndUpdate({_id: req.params.id}, {starred:0})
             console.log("unstarred Post");
             res.redirect("/ratings");
@@ -93,5 +91,3 @@ module.exports = {
           }
     },
 }
-
-    // todos: todoItems, left: itemsLeft,

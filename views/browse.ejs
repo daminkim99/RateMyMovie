@@ -1,4 +1,5 @@
 <%- include('partials/header') -%>
+
 <h2>Search Results for : <%=request%> </h2>
 <form action="/ratings/addMovie" method="POST">
   <div class="movieSelection">
@@ -13,9 +14,11 @@
           
           <input type="radio" id="<%=movie[i].title%>" name="userpick" value="<%=movie[i].id%>,<%=movie[i].poster%>,<%=movie[i].title%>,<%=movie[i].release_date%>">
         </div>
+        
       </div>
     <% } %>
   </div>
+  <div class="reviewbox">
     <label for="rating">Rating</label>
     <select class="form-control" id="rating" name="rating">
       <option value="1">1</option>
@@ -29,6 +32,7 @@
       <textarea class="form-control" id="review" rows="3" name="review"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Create Rating</button>
+  </div>
 </form>
 <%- include('partials/footer') -%>
 

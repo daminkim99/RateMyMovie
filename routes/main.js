@@ -1,9 +1,10 @@
-const express = require("express");
-const router = express.Router();
-const authController = require("../controllers/auth");
-const homeController = require("../controllers/home");
-// const postsController = require("../controllers/posts");
-const { ensureAuth, ensureGuest } = require("../middleware/auth");
+const express = require("express")
+const router = express.Router()
+const authController = require("../controllers/auth")
+const homeController = require("../controllers/home")
+const { ensureAuth, ensureGuest } = require("../middleware/auth")
+
+//Home routes -
 
 router.get("/", homeController.getIndex);
 router.get('/login', authController.getLogin)

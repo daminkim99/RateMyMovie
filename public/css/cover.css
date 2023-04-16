@@ -132,3 +132,24 @@ body {
 .goback a, .goback a:hover{
   color: white;
 }
+
+@media all and (max-width: 500px){
+  .col-6{
+    width:100%;
+  }
+  .containers, .movieSelection{
+    display:block;
+    width:70%;
+    margin: 0 auto;
+  }
+  .card{
+    margin: 3% auto;
+    width:13rem !important;
+  }
+  .form-control{
+    width:100%;
+  }
+  .goback{
+    width:40%;
+  }
+}

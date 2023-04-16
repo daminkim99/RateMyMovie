@@ -7,15 +7,15 @@ const RatingSchema = new mongoose.Schema({
   },
   poster: {
     type: String,
-    require: true,
+    required: true,
   },
   title_id: {
     type: String,
-    require: true,
+    required: true,
   },
   review: {
     type: String,
-    required: true,
+    
   },
   rating: {
     type: String,

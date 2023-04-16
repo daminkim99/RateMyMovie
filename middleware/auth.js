@@ -1,3 +1,5 @@
+//middleware to ensure user is logged in before using the app 
+
 module.exports = {
     ensureAuth: function (req, res, next) {
       if (req.isAuthenticated()) {

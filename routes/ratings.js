@@ -5,7 +5,7 @@ const router = express.Router();
 const ratingsController = require("../controllers/ratings");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-//Post Routes - simplified for now
+//Ratings Routes
 router.get("/", ensureAuth, ratingsController.getRatings)
 
 router.get("/add", ensureAuth, ratingsController.getMovie)

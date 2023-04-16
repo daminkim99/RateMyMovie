@@ -2,6 +2,8 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 
+//controllers for handelling authentication related functions , signin /logout/signup 
+
 exports.getLogin = (req, res) => {
     if (req.user) {
       return res.redirect("/ratings");
@@ -46,9 +48,6 @@ exports.getLogin = (req, res) => {
   };
   
   exports.logout = (req, res) => {
-    // req.logout(() => {
-    //   console.log('User has logged out.')
-    // }) --> logout should be post not a get request 
     req.session.destroy((err) => {
       if (err)
         console.log("Error : Failed to destroy the session during logout.", err);
